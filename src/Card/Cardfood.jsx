@@ -1,30 +1,28 @@
 import React, { useState } from "react";
 
 function Cardfood() {
-  const [image, setImage] = useState(0); // Current image index
-  const totalImages = 3; // Total number of images (e.g., 0.png, 1.png, 2.png)
-  const [direction, setDirection] = useState("right"); // Track the transition direction
+  const [image, setImage] = useState(0);
+  const totalImages = 3; 
+  const [direction, setDirection] = useState("right");
 
   const NextCard = () => {
     setDirection("right");
-    setImage((prev) => (prev + 1) % totalImages); // Circularly go to the next image
+    setImage((prev) => (prev + 1) % totalImages); 
   };
 
   const PrevCard = () => {
     setDirection("left");
-    setImage((prev) => (prev - 1 + totalImages) % totalImages); // Circularly go to the previous image
+    setImage((prev) => (prev - 1 + totalImages) % totalImages);
   };
 
   return (
     <div className="relative h-full w-full overflow-hidden">
-      {/* Slider Container */}
       <div
         className={`flex transition-transform duration-700 ease-in-out`}
         style={{
           transform: `translateX(-${image * 100}%)`,
         }}
       >
-        {/* Images */}
         {[...Array(totalImages)].map((_, index) => (
           <img
             key={index}
@@ -34,8 +32,6 @@ function Cardfood() {
           />
         ))}
       </div>
-
-      {/* Navigation Buttons */}
       <button
         onClick={PrevCard}
         className="absolute top-1/2 left-1 transform -translate-y-1/2 rounded-full text-black bg-gray-200 hover:bg-black hover:text-white p-2"
