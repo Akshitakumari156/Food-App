@@ -62,8 +62,8 @@ function Navbar() {
       </div>
       <div id="hello" className='flex -ml-4 pr-7'>
       <Togglestate/>
-      <Link to="/Cart"><img  src="https://static.vecteezy.com/system/resources/previews/015/506/482/non_2x/food-delivery-logo-design-fast-delivery-service-sign-delivery-logo-online-food-ordering-restaurant-vector.jpg" className='h-30 w-32' /></Link>
-      <Link className="mt-10 mr=10 hover:underline cursor" to="Login">Login</Link>
+      <Link to="/Checkout"><img  src="https://static.vecteezy.com/system/resources/previews/015/506/482/non_2x/food-delivery-logo-design-fast-delivery-service-sign-delivery-logo-online-food-ordering-restaurant-vector.jpg" className='h-30 w-32' /></Link>
+      <Link className="mt-10 mr=10 hover:underline cursor" to="Login"><img src="/LOGO/login.png" className='h-10 w-10'/></Link>
       </div>
     </div>
     

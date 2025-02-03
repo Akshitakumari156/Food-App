@@ -7,6 +7,7 @@ function Menupage() {
   const[open,setOpen]=useState(false);
   const[cart,Setcart]=useState([]);
   const[totalitem,SetTotalitem]=useState(0);
+  const[cost,Setcost]=useState(0);
 
   const[category,setCategory]=useState('');
   const[veg,setveg]=useState('');
@@ -36,6 +37,8 @@ function Menupage() {
   useEffect(()=>{
     let k=cart.reduce((sum,item)=>sum+item.quantity,0)
     SetTotalitem(k);
+    let y=cart.reduce((sumC,item)=>sumC+(item.quantity)*(item.price),0);
+    Setcost(y);
     console.log(totalitem);
   },[cart]);
 
@@ -59,7 +62,7 @@ function Menupage() {
       return(
         <>
         <div className='fixed right-0 top-0 w-full lg:w-[20vw] h-full bg-white'>
-         <Cartpage Deleteitem={Deleteitem} open={open} setOpen={setOpen} cart={cart} Increasequantity={Increasequantity} Decreasequantity={Decreasequantity} totalitem={totalitem}/>
+         <Cartpage Deleteitem={Deleteitem} open={open} setOpen={setOpen} cart={cart} Increasequantity={Increasequantity} Decreasequantity={Decreasequantity} totalitem={totalitem} cost={cost}/>
         </div>
         </>
       )

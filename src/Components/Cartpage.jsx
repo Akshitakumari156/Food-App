@@ -1,11 +1,16 @@
 import React from 'react';
 import { IoMdClose } from "react-icons/io";
 import ItemCard from '../Card/ItemCard';
-
-function Cartpage({open,setOpen,cart,Increasequantity,Decreasequantity,Deleteitem,totalitem}) {
+import { useNavigate } from 'react-router-dom';
+function Cartpage({open,setOpen,cart,Increasequantity,Decreasequantity,Deleteitem,totalitem,cost}) {
   const CloseCart=()=>{
     setOpen(false);
     console.log(open);
+  }
+  const NavigateCheck=useNavigate();
+  function Redirectocheckout(){
+     console.log("Total cost before navigating",cost);
+     NavigateCheck("/Checkout",{state:{totalcost:cost}});
   }
   return (
     <div className={`transform ${open? "translate-x-0" : "translate-x-full"} transition-all duration-500 z-50 fixed  right-0 top-0 h-screen w-[22vw] bg-white shadow-lg flex flex-col`}>
@@ -22,8 +27,8 @@ function Cartpage({open,setOpen,cart,Increasequantity,Decreasequantity,Deleteite
 
       <div className="p-4 bg-white shadow-md">
         <div className="font-medium text-lg">Items:{totalitem}</div>
-        <div className="font-medium text-lg mb-4">Total Amount: ₹900</div>
-        <button className="w-full p-4 font-bold text-xl rounded-lg bg-green-500 text-white hover:scale-105 hover:shadow-lg transition">
+        <div className="font-medium text-lg mb-4">Total Amount: ₹{cost}</div>
+        <button onClick={Redirectocheckout} className="w-full p-4 font-bold text-xl rounded-lg bg-green-500 text-white hover:scale-105 hover:shadow-lg transition">
           Checkout
         </button>
       </div>

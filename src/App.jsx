@@ -6,6 +6,7 @@ import Cartpage from './Components/Cartpage'
 import Loginpage from './Components/Loginpage'
 import Layoutpage from './Components/Layoutpage'
 import Contactus from './Components/Contactus'
+import Checkout from './Components/Checkout'
 function App() {
   return (
     <>
@@ -17,6 +18,7 @@ function App() {
          <Route path="/Contact" element={<Contactus/>}/>
          <Route path="/Cart" element={<Cartpage/>}/>
          <Route path="/Login" element={<Loginpage/>}/>
+         <Route path="/Checkout" element={<Checkout/>}/>
          </Route>
       </Routes>
       </BrowserRouter>
