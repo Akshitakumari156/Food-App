@@ -19,9 +19,6 @@ function CartTotal({totalcost}) {
         <p className='font-medium text-[1rem]'>Total</p>
         <p className='mr-8 font-medium text-xl'>₹{totalcost+20}</p>
     </div>
-    <div className='mt-15'>
-        <button className='border p-3 rounded-2xl font-bold bg-orange-500 hover:bg-orange-600 text-white shadow-md transition duration-300'>Proceed To Payment</button>
-    </div>
     </>
   )
 }

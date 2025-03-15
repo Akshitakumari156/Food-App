@@ -1,6 +1,25 @@
-import React, { createContext, useContext, useState } from 'react'
-import { Link } from 'react-router-dom'
+import React, { createContext, useContext, useEffect, useState } from 'react'
+import { Link, redirect } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom';
+import { useRef } from 'react';
 
+
+const useDebounce=(value,delay)=>{
+    const[DebounceValue,SetDebounceValue]=useState(value);
+    const timer=useRef()
+
+    useEffect(()=>{
+    clearTimeout(timer.current);
+    timer.current=setTimeout(()=>{
+       SetDebounceValue(value);
+    },delay);
+
+    return ()=>clearTimeout(timer.current);
+    },[value,delay]);
+
+    return DebounceValue;
+
+}
 const BulbContext=createContext();
 
 function BulbProvider({children}){
@@ -22,12 +41,23 @@ function Togglestate(){
 }
 
 function Inputbox(){
+  const[InputValue,SetInputValue]=useState("");  
+  const DebounceInput=useDebounce(InputValue,1000);
+  const Navigate=useNavigate();
+
+  useEffect(()=>{
+     if(DebounceInput && DebounceInput.trim()!=''){
+        console.log("Input:",DebounceInput);
+        Navigate("/Menu");
+     }
+  },[DebounceInput,Navigate]);
+
   return(
     <>
-    <input  type="text" className="border-black mt-8 gap-0.5 border rounded-md p-4 h-5 w-60" placeholder='Type to search here'/>
+    <input  type="text" className="border-black mt-8 gap-0.5 border rounded-md p-4 h-5 w-60" placeholder='Type to search here' onChange={(e)=>{SetInputValue(e.target.value)}}/>
     </>
   )
-}
+};
 
 function GenerateBox(){
   const[input,SetInput]=useState(false);
@@ -38,10 +68,6 @@ function GenerateBox(){
     </>
   )
 }
-
-
-
-
 function Navbar() {
   const {bulbon,setBulbon}=useContext(BulbContext);
 
@@ -54,7 +80,7 @@ function Navbar() {
     <div className="p-10 space-x-16 text-xl mr-4">
         <Link className="hover:underline cursor"to="/Home">Home</Link>
         <Link className="hover:underline cursor" to="/Menu">Menu</Link>
-        <Link className="hover:underline cursor" to="/Contact">Contact Us</Link>
+        <Link className="hover:underline cursor" >Contact Us</Link>
     </div>
     <div  id="hello2"class="text-xl flex  gap-5 -mt-3">
       <div className="flex mt-4">

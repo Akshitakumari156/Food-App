@@ -2,7 +2,8 @@ import React from 'react';
 import { IoMdClose } from "react-icons/io";
 import ItemCard from '../Card/ItemCard';
 import { useNavigate } from 'react-router-dom';
-function Cartpage({open,setOpen,cart,Increasequantity,Decreasequantity,Deleteitem,totalitem,cost}) {
+function Cartpage({open,setOpen,cart,Increasequantity,Decreasequantity,Deleteitem,totalitem,cost,SetMovementCart}) {
+  
   const CloseCart=()=>{
     setOpen(false);
     console.log(open);
@@ -22,7 +23,7 @@ function Cartpage({open,setOpen,cart,Increasequantity,Decreasequantity,Deleteite
       <div  className="flex-grow overflow-y-auto px-3">
       {cart.length > 0 ? cart.map((item, index) => (
         <ItemCard key={index} item={item} Increasequantity={Increasequantity} Decreasequantity={Decreasequantity} Deleteitem={Deleteitem}/>
-       )) : <p className="text-center text-gray-500">Your cart is empty</p>}
+       )) :<>{SetMovementCart(false)} <p className="text-center text-gray-500">Your cart is empty</p></>}
       </div>
 
       <div className="p-4 bg-white shadow-md">

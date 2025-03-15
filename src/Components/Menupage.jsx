@@ -8,6 +8,7 @@ function Menupage() {
   const[cart,Setcart]=useState([]);
   const[totalitem,SetTotalitem]=useState(0);
   const[cost,Setcost]=useState(0);
+  const[movementCart,SetMovementCart]=useState(false);
 
   const[category,setCategory]=useState('');
   const[veg,setveg]=useState('');
@@ -19,7 +20,7 @@ function Menupage() {
       }
       Setselectedcategory(newcategory);
   }
-  
+
   function addtocart(item){
     Setcart((prevCart) => {
       const itemExists = prevCart.find(cartItem => cartItem.id === item.id);
@@ -62,7 +63,7 @@ function Menupage() {
       return(
         <>
         <div className='fixed right-0 top-0 w-full lg:w-[20vw] h-full bg-white'>
-         <Cartpage Deleteitem={Deleteitem} open={open} setOpen={setOpen} cart={cart} Increasequantity={Increasequantity} Decreasequantity={Decreasequantity} totalitem={totalitem} cost={cost}/>
+         <Cartpage Deleteitem={Deleteitem} open={open} setOpen={setOpen} cart={cart} Increasequantity={Increasequantity} Decreasequantity={Decreasequantity} totalitem={totalitem} cost={cost} SetMovementCart={SetMovementCart}/>
         </div>
         </>
       )
@@ -82,9 +83,9 @@ function Menupage() {
       <Button1 onClick={() => callCard1('No')} username="Non-Veg" color="red" className={`${selectedVeg === 'No'?'bg-red-500 text-white':'bg-gray-200 text-black'}`}/>
     </div>
     <div className=' h-auto '>
-      <FoodCard category={category} veg={veg} open={open} setOpen={setOpen} addtocart={addtocart} />
+      <FoodCard category={category} veg={veg} open={open} setOpen={setOpen} addtocart={addtocart} SetMovementCart={SetMovementCart}/>
       <div className='sticky bottom-2/100'>
-      <div className='sticky bottom-6 left-94/100 w-[4rem] h-[4rem] flex items-center justify-center rounded-full shadow-xl border cursor-pointer hover:scale-110 transition' onClick={() => setOpen(true)}>
+      <div className={`sticky bottom-6 left-94/100 w-[4rem] h-[4rem] flex items-center justify-center rounded-full shadow-xl border cursor-pointer hover:scale-110 transition ${movementCart ? 'animate-bounce':''}`} onClick={() => setOpen(true)}>
       <img src="/LOGO/cart.png" className=" w-3/4 h-3/4" onClick={()=>{setOpen(true)}} />
       </div>
       </div>

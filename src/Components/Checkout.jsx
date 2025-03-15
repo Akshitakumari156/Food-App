@@ -1,11 +1,21 @@
 import React from 'react'
 import CartTotal from '../Card/CartTotal'
 import { useLocation } from 'react-router-dom';
+import { PayPalScriptProvider, PayPalButtons } from "@paypal/react-paypal-js";
+
 function Checkout() {
   const location = useLocation();
   console.log("received cost",location.state);
   const totalcost = location.state?.totalcost||0;
   console.log("Extracted totalCost in Checkout:", totalcost);
+
+  const handleApprove = (data, actions) => {
+    return actions.order.capture().then((details) => {
+      alert(`Payment successful! Thank you, ${details.payer.name.given_name}.`);
+      console.log("Order details:", details);
+    });
+  };
+
   return (
     <>
      <div className='flex border h-[80vh] mt-4 justify-between '>
@@ -35,6 +45,20 @@ function Checkout() {
         </div>
         <div className='border mt-15 h-fit mr-15 pl-12 w-xl pb-4 pt-2'>
            <CartTotal totalcost={totalcost}/>
+           <PayPalScriptProvider options={{ "client-id": "Ab5VyN1dXWQDDsh1KDyB2ixqC8kxzSStckLrsX3vDbhNnwitUmTcnxnXFGTZtPWhPRJni6cwYpJrddJp"}}>
+            <div className="mt-4 mr-6 p-4 border rounded-lg shadow-md bg-gray-50">
+              <h2 className="text-xl font-semibold mb-2 text-gray-700">Pay Securely with PayPal</h2>
+              <PayPalButtons
+                style={{ layout: "vertical", shape: "rect", color: "blue" }}
+                createOrder={(data, actions) => {
+                  return actions.order.create({
+                    purchase_units: [{ amount: { value: (totalcost+20).toFixed(2) } }]
+                  });
+                }}
+                onApprove={handleApprove}
+              />
+            </div>
+          </PayPalScriptProvider>
         </div>
      </div>
     </>

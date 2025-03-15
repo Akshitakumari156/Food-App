@@ -10,9 +10,12 @@ function Homepage() {
     <div className="overflow-x-hidden">
         <div className="overflow-x-auto w-screen">
           <Cardfood />
-          <Homecard />
+          {/* <Homecard /> */}
+          <Homecard/>
           <NavMenu/>
+
           <Chef/>
+          
           <Detail/>
         </div>
     </div>

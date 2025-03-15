@@ -237,6 +237,24 @@ const FoodData = [
       category:"Lunch",
       rating:4.6,
       Veg:"Yes",
-    },
+    },{
+      id:25,
+      img:"https://www.shutterstock.com/image-photo/chole-bhature-north-indian-food-600nw-2238261205.jpg",
+      name:"Chole Bhature",
+      price:200,
+      desc:" A flavorful North Indian dish with spicy chickpea curry and fluffy fried bread. Served with pickles and onions, it’s a perfect choice for lunch or brunch.",
+      category:"Lunch",
+      rating:4.1,
+      Veg:"Yes",
+    },{
+      id:26,
+      img:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcThT8xs4wQQxMcTSGAOJCrXlxQFTJ7-DpKNGA&s",
+      name:"Pav Bhaji",
+      price:150,
+      desc:"Pav Bhaji is a spicy mashed vegetable curry served with buttered bread rolls, a popular Indian street food.",
+      category:"Breakfast",
+      rating:4.4,
+      Veg:"Yes",
+    }
   ];
   export default FoodData;

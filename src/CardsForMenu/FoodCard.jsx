@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react'
 import FoodData from '../Data/Fooddata'
 
-function FoodCard({category,veg,open,setOpen,addtocart}) {
+function FoodCard({category,veg,open,setOpen,addtocart,SetMovementCart}) {
     const FilteredItems=FoodData.filter((item)=>{
     const matchesCategory = category ? item.category === category : true;
     const matchesVeg = veg ? item.Veg === veg : true;
@@ -14,13 +14,11 @@ function FoodCard({category,veg,open,setOpen,addtocart}) {
 
   const openCart=(item)=>{
       addtocart(item);
-      if(!open){
-        open=true;
-      }
-      setOpen(true);
+      SetMovementCart(true);
       console.log(open);
       console.log(item);
   }
+  
   return (
     <div className='grid grid-cols-4 gap-4 p-4 '>
       {FilteredItems.map((item)=>(

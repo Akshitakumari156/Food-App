@@ -1,5 +1,6 @@
 import React from 'react';
-
+import Menupage from './Menupage';
+import { Link } from 'react-router-dom';
 function Footer() {
   return (
     <div className="bg-cyan-800 text-white">
@@ -16,8 +17,8 @@ function Footer() {
           <h3 className="font-bold text-2xl mb-3">Quick Links</h3>
           <ul className="space-y-2 text-sm">
             <li className="hover:text-cyan-400 transition duration-200 cursor-pointer">Home</li>
-            <li className="hover:text-cyan-400 transition duration-200 cursor-pointer">Menu</li>
-            <li className="hover:text-cyan-400 transition duration-200 cursor-pointer">About Us</li>
+            <Link to="/Menu" element={<Menupage/>}className="hover:text-cyan-400 transition duration-200 cursor-pointer">Menu</Link>
+            <li className="hover:text-cyan-400 transition duration-200 cursor-pointer mt-2">About Us</li>
             <li className="hover:text-cyan-400 transition duration-200 cursor-pointer">Contact Us</li>
             <li className="hover:text-cyan-400 transition duration-200 cursor-pointer">FAQs</li>
           </ul>
