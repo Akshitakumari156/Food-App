@@ -1,5 +1,5 @@
 import React from 'react'
-import Cardfood from '../card/cardfood'
+import CardFood from '../Card/CardFood'
 import Homecard from '../Card/Homecard'
 import Detail from '../Card/Detail'
 import NavMenu from '../Card/NavMenu'
@@ -9,7 +9,7 @@ function Homepage() {
     <>
     <div className="overflow-x-hidden">
         <div className="overflow-x-auto w-screen">
-          <Cardfood />
+          <CardFood />
           {/* <Homecard /> */}
           <Homecard/>
           <NavMenu/>

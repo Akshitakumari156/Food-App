@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-function Cardfood() {
+function CardFood() {
   const [image, setImage] = useState(0);
   const totalImages = 3; 
   const [direction, setDirection] = useState("right");
@@ -48,4 +48,4 @@ function Cardfood() {
   );
 }
 
-export default Cardfood;
+export default CardFood;
